@@ -37,7 +37,7 @@ paths:
             $ref: '#/definitions/problem'
       x-monitor: false
 
-  /mean-fake-timeserie/{from}/{to}/{step}:
+  /my-fake-timeserie/{from}/{to}/{step}:
     get:
       tags:
         - EBDO FeatureService Examples
@@ -153,8 +153,7 @@ definitions:
             ts:
               type : string
             val:
-                type: double
-
+              type: double
 
   mean-timeserie:
     properties:
