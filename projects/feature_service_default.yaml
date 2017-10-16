@@ -17,19 +17,7 @@ paths:
             /examples:
               x-modules:
                 - path: v1/examples.yaml
-  /{api:v2}:
-    x-modules:
-      - spec:
-          # Careful - There are 2 indentations here
-          info:
-            version: 1.0.0-alpha
-            title: EBDO FeatureService API test
-            description: EBDO FeatureService API test
 
-          paths:
-            /examples:
-              x-modules:
-                - path: v2/examples.yaml
 
   /{api:sys}:
     x-modules:
