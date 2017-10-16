@@ -63,7 +63,7 @@ paths:
           type: string
           enum: ['second', 'minute', 'hour', 'day']
           required: true
-      operationId: fakeTimeserie
+      operationId: meanTimeserie
       x-request-handler:
         - get_from_backend:
             request:
