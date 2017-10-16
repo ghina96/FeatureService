@@ -37,7 +37,7 @@ paths:
             $ref: '#/definitions/problem'
       x-monitor: false
 
-  /my-fake-timeserie/{from}/{to}/{step}:
+  /mean-fake-timeserie/{from}/{to}/{step}:
     get:
       tags:
         - EBDO FeatureService Examples
@@ -63,15 +63,7 @@ paths:
           type: string
           enum: ['second', 'minute', 'hour', 'day']
           required: true
-      responses:
-        '200':
-          description: The list of timestamps and generated random values
-          schema:
-            $ref: '#/definitions/fake-timeserie'
-        default:
-          description: Error
-          schema:
-            $ref: '#/definitions/problem'
+      operationId: fakeTimeserie
       x-request-handler:
         - get_from_backend:
             request:
