@@ -63,11 +63,19 @@ paths:
           type: string
           enum: ['second', 'minute', 'hour', 'day']
           required: true
-      operationId: meanTimeserie
+      responses:
+        '200':
+          description: The list of timestamps and generated random values
+          schema:
+            $ref: '#/definitions/mean-timeserie'
+        default:
+          description: Error
+          schema:
+            $ref: '#/definitions/problem'
       x-request-handler:
         - get_from_backend:
             request:
-              uri: /{domain}/v1/examples/fake-timeserie/{from}/{to}/{step}
+              uri: /{domain}/sys/examples/mean-timeserie/{from}/{to}/{step}
       x-monitor: false
 
   /fake-timeserie/{from}/{to}/{step}:
@@ -150,4 +158,4 @@ definitions:
   mean-timeserie:
     properties:
       items:
-          type: double
+        type: double
