@@ -1,4 +1,4 @@
-# EBDO Feature Service
+# EBDO Feature Service [![Build Status](https://travis-ci.org/Project-EBDO/FeatureService.svg?branch=master)](https://travis-ci.org/Project-EBDO/FeatureService)
 
 REST API for EBDO features data
 
