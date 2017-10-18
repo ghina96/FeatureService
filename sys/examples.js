@@ -58,18 +58,19 @@ class TimeserieTreament {
 		var requestParams = req.params;
 	    fsUtil.validateFromAndTo(requestParams);
 
-		const uriFakeTS = new URI([requestParams.domain, 'sys', 'examples', 'fake-timeserie',
-			requestParams.from,requestParams.to,requestParams.step]);
+		const uriFakeTS = new URI([requestParams.domain, 'sys', 'examples',
+			'fake-timeserie',requestParams.from,
+			requestParams.to,requestParams.step]);
 
 		var avg = await hyper.get({ uri: uriFakeTS }).then((res) =>
-			res.body.items.map(items => items.val).reduce((prev, next) => prev + next, 0)/res.body.items.length);
+			res.body.items.map(items => items.val).
+				reduce((prev, next) => prev + next, 0)/res.body.items.length);
 
 	    return fsUtil.normalizeResponse({
 	        status: 200,
 	        body: {
 	            items:
 					avg
-
 			}
 	    });
 
