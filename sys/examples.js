@@ -37,6 +37,8 @@ const STEP_TO_SECONDS = {
 
 
 class TimeserieTreament {
+	// Class that handles timeseries requests
+
     constructor(options) {
         this.options = options;
 	}
@@ -70,14 +72,18 @@ class TimeserieTreament {
 	}
 
 	async meanTimeserie(hyper, req) {
+		// Returns mean of the timeserie specified in the request
+
 		var requestParams = req.params;
 	    fsUtil.validateFromAndTo(requestParams);
 
+		// Build the uri used to request the timeserie
 		const uriFakeTS = new URI([requestParams.domain, 'sys', 'examples',
 			'fake-timeserie',requestParams.from,
 			requestParams.to,requestParams.step]);
 
-		var avg = await hyper.get({ uri: uriFakeTS }).then((res) =>
+		// Request the timeserie, wait for the response and store the result
+		var mean = await hyper.get({ uri: uriFakeTS }).then((res) =>
 			res.body.items.map(items => items.val).
 				reduce((prev, next) => prev + next, 0)/res.body.items.length);
 
@@ -85,7 +91,7 @@ class TimeserieTreament {
 	        status: 200,
 	        body: {
 	            items:
-					avg
+					mean // return the mean in the response
 			}
 	    });
 
